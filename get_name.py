@@ -16,6 +16,8 @@ char_dim = 29
 
 x = np.zeros((1, max_char, char_dim))
 
+model = tf.keras.models.load_model('boy_name.h5')
+
 def make_name():  
     name = []
     x = np.zeros((1, max_char, char_dim))
