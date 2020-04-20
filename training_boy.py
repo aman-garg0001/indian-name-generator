@@ -48,7 +48,6 @@ for i in range(m):
             
 from tensorflow.python.keras.models import Sequential
 from tensorflow.python.keras.layers import LSTM, Dense
-from tensorflow.python.keras.callbacks import LambdaCallback
 
 model = Sequential()
 model.add(LSTM(128, input_shape=(max_char, char_dim), return_sequences=True))
@@ -56,8 +55,6 @@ model.add(Dense(char_dim, activation='softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer='adam')
 
-name_generator = LambdaCallback(on_epoch_end = generate_name_loop)
-
-model.fit(X, Y, batch_size=64, epochs=500, callbacks=[name_generator], verbose=1)
+model.fit(X, Y, batch_size=64, epochs=500, verbose=1)
 
 model.save('boy_name.h5')
